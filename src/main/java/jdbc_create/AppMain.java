@@ -106,13 +106,11 @@ public class AppMain {
 			e.printStackTrace();
 		} finally {
 			// finally block used to close resources
-			try {
-				// statement.close();
+		
+				 statement.close();
 				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
 				System.out.println("connecton closed successfully...");
-			}
+			
 		}
 	}
 
