@@ -19,9 +19,15 @@ public class AppMain {
 			// STEP 2: Open a connection
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "root");
 			System.out.println("Connection created successfully....");
+			System.out.println("drop table if exist");
+			statement = connection.createStatement();
+			String q = "drop table emp";
+			statement.executeUpdate(q);
+			System.out.println("table dropped successfully...");
+
+			// creating table
 			String query = "Create table emp(eId int not null,eName varchar(30) not null,eSal int not null,primary key(eId))";
 
-			statement = connection.createStatement();
 			// STEP 3: Execute a query
 			int x = statement.executeUpdate(query);
 			System.out.println("table created successfully...." + x);
@@ -55,7 +61,7 @@ public class AppMain {
 		} finally {
 			// finally block used to close resources
 			try {
-				statement.close();
+				// statement.close();
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
